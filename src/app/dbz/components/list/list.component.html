@@ -1,0 +1,34 @@
+<h4>Listado</h4>
+  <ul class="list-group">
+
+<!--let i = index es para sacar el indice del array
+isEven si es par, isOdd es impar-->
+
+    <li *ngFor="
+      let character of characterList;
+      let i = index;
+      let isFirst = first;
+      let isLast = last;
+      let isEven = even;
+      let isOdd = odd"
+
+      class="list-group-item d-flex justify-content-between align-items-center"
+      [ngClass]="{
+        'list-group-item-dark': isLast,
+        'list-group-item-primary': isEven
+      }">
+<!--ngClass me pone la clase de css que quiera segun condicion, en este ejemplo si es el ultimo y si es par, teniendo en cuenta q estamos sumando mas 1 al indice cuando lo pintamos-->
+
+    <div>
+      <span class="text-primary"> {{ i + 1}}. </span>
+      <span>{{ character.name }} - </span>
+      <strong>Power: </strong>
+      <span>{{ character.power }}</span>
+    </div>
+
+    <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">X</button>
+
+      <!--<span>Es Par: {{ isEven }}</span>
+      <span>Es Impar: {{ isOdd }}</span>-->
+    </li>
+  </ul>
